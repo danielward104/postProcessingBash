@@ -2,6 +2,7 @@
 cwd=$(pwd)
 rm dirs.txt    2>/dev/null
 num_process=0
+sleep_time=10
 
 runscript='plumeOutline'
 
@@ -40,6 +41,8 @@ do
 
         qsub run_python.sh
         ((num_process=num_process+1))
+
+        #rm $simulation/$folders/images_outline/heightTest*      2>/dev/null
 
         cd ..
     done < "${cwd}/dirs.txt"
@@ -169,11 +172,11 @@ do
         fi
     done
 
-    echo "$finished_jobs" of the jobs have finished.
+    echo "$finished_jobs" of "$num_process" jobs have finished.
 
     rm "tester.txt"     2>/dev/null
 
-    sleep 30m
+    sleep $sleep_time
 
 done
 
@@ -181,7 +184,7 @@ rm job_status.txt
 
 ## Moves all data to '/nobackup/scdrw/processing/rise_heights' and renames for easy-viewing.
 # Runs through every line in file.
-while IFS="," read -r numelz jump simulation Re Res remainder
+while IFS="," read -r numelz jump sval simulation Re Res remainder
 do
     echo Copying from "$simulation".
 
@@ -196,6 +199,21 @@ do
         cd $folders
 
         cp *.file /nobackup/scdrw/processing/rise_heights
+        printf -v Re_in "%04d" $Re
+        printf -v Res_in "%04d" $Res
+
+#        echo Re_in = "$Re_in". Res_in = "$Res_in".
+#        echo
+#        echo Parameters: "$simulation". Re = "$Re". Res = "$Res".
+#        echo Making "/nobackup/scdrw/processing/rise_heights/images/Re${Re_in}_Res${Res_in}_${repeats}"
+#        echo Copying from "$simulation/$folders/images_outline/heightTest*"
+#        echo Copying to "/nobackup/scdrw/processing/rise_heights/images/Re${Re_in}_Res${Res_in}_${repeats}/"
+#        echo
+
+        rm /nobackup/scdrw/processing/rise_heights/images/Re${Re_in}_Res${Res_in}_${repeats}/heightTest*    2>/dev/null
+
+        mkdir /nobackup/scdrw/processing/rise_heights/images/Re${Re_in}_Res${Res_in}_${repeats}  2>/dev/null
+        cp $simulation/$folders/images_outline/heightTest* /nobackup/scdrw/processing/rise_heights/images/Re${Re_in}_Res${Res_in}_${repeats}/
         cd /nobackup/scdrw/processing/rise_heights
         ./rename_script.sh $Re $Res $repeats
 

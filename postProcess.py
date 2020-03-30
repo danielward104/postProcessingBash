@@ -19,9 +19,9 @@ print(' ')
 print('Running with numelz = ',numelz,'.  Have you checked this is correct?')
 print(' ')
 
-s-value = 0.03  # Threshold value for edge determination.
+svalue = 0.03  # Threshold value for edge determination.
 print(' ')
-print('Running with s-value = ',s-value,'.  Have you compared this to images?')
+print('Running with s-value = ',svalue,'.  Have you compared this to images?')
 print(' ')
 # Insert path (for comp-pc6076 vs ARC vs VIPER).
 #sys.path.insert(1,'/home/cserv1_a/soc_pg/scdrw/Documents/nbudocuments/PhD/SimNumerics/Python/postProcessingLib/scripts')      # Comp-pc6076
@@ -51,7 +51,7 @@ def plumeOutline():
         jump,      # Jump
         file_count,      # Final timestep
         numelz,     # Number of elements in z-direction
-        s-value,   # Cutoff value for s
+        svalue,   # Cutoff value for s
         0.5,      # start averaging at this time
         0      # Image on/off
         )

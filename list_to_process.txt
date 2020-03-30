@@ -1,5 +1,5 @@
 Numelz, Jump, s-value, Path-to-simulation, Re, Re_s
-22,5,0.03,/nobackup/scdrw/plume_v1_production/Re0300/Res0250,300,250
-24,5,0.03,/nobackup/scdrw/plume_v1_production/Re0500/Res0250/NEL_05376,500,250
-34,5,0.03,/nobackup/scdrw/plume_v1_production/Re1000,1000,250
-34,5,0.03,/nobackup/scdrw/plume_v1_production/Re1500,1500,250
+22,500,0.03,/nobackup/scdrw/plume_v1_production/Re0300/Res0250,300,250
+24,500,0.03,/nobackup/scdrw/plume_v1_production/Re0500/Res0250/NEL_05376,500,250
+34,500,0.03,/nobackup/scdrw/plume_v1_production/Re1000,1000,250
+34,500,0.03,/nobackup/scdrw/plume_v1_production/Re1500,1500,250
